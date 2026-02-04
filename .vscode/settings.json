@@ -9,16 +9,23 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
 
   "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.colorDecorators": true
   },
   "[javascriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.colorDecorators": true
   },
   "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.colorDecorators": true
   },
   "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.colorDecorators": true
+  },
+  "[json]": {
+    "editor.colorDecorators": true
   },
 
   // Run ESLint fixes on save
@@ -81,6 +88,11 @@
   "editor.minimap.enabled": false,
   "editor.scrollBeyondLastLine": false,
   "editor.cursorSmoothCaretAnimation": "on",
+  "editor.colorDecorators": true,
+
+  // Optional: VSCode Color Picker extension settings
+  "color-picker.enableAutoColorDecorators": true,
+  "color-picker.enableAlpha": true,
 
   // =========================
   // Files
