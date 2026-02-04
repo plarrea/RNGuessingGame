@@ -1,9 +1,11 @@
+import { Ionicons } from '@expo/vector-icons';
 import { useEffect, useState } from 'react';
 import { Alert, StyleSheet, Text, View } from 'react-native';
+import InstructionText from '../components/game/InstructionText';
 import NumberContainer from '../components/game/NumberContainer';
+import Card from '../components/ui/Card';
 import PrimaryButton from '../components/ui/PrimaryButton';
 import Title from '../components/ui/Title';
-import Colors from '../constants/colors';
 
 const generateRandomBetween = (min, max, exclude) => {
   const rndNum = Math.floor(Math.random() * (max - min)) + min;
@@ -44,11 +46,7 @@ const GameScreen = ({ userNumber, onGameOver }) => {
     } else {
       minBoundary = currentGuess + 1; // +1 because it is included
     }
-    const newGuess = generateRandomBetween(
-      minBoundary,
-      maxBoundary,
-      currentGuess,
-    );
+    const newGuess = generateRandomBetween(minBoundary, maxBoundary, 0);
     setCurrentGuess(newGuess);
   };
 
@@ -56,19 +54,25 @@ const GameScreen = ({ userNumber, onGameOver }) => {
     <View style={styles.screen}>
       <Title>Opponent's Guess</Title>
       <NumberContainer>{currentGuess}</NumberContainer>
-      <View>
-        <Text>Higher or Lower?</Text>
-        <View>
-          <PrimaryButton onPress={nextGuessHandler.bind(this, 'lower')}>
-            -
-          </PrimaryButton>
-          <PrimaryButton onPress={nextGuessHandler.bind(this, 'greater')}>
-            +
-          </PrimaryButton>
+      <Card>
+        <InstructionText style={styles.instructionText}>
+          Higher or Lower?
+        </InstructionText>
+        <View style={styles.buttonsContainer}>
+          <View style={styles.buttonContainer}>
+            <PrimaryButton onPress={nextGuessHandler.bind(this, 'lower')}>
+              <Ionicons name="remove" size={24} color="white" />
+            </PrimaryButton>
+          </View>
+          <View style={styles.buttonContainer}>
+            <PrimaryButton onPress={nextGuessHandler.bind(this, 'greater')}>
+              <Ionicons name="add" size={24} color="white" />
+            </PrimaryButton>
+          </View>
         </View>
-      </View>
+      </Card>
       <View>
-        <Text>Log Rounds</Text>
+        <Text>Log Rounsds</Text>
       </View>
     </View>
   );
@@ -81,13 +85,13 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 24,
   },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: Colors.accent500,
-    textAlign: 'center',
-    borderWidth: 2,
-    borderColor: Colors.accent500,
-    padding: 12,
+  instructionText: {
+    marginBottom: 12,
+  },
+  buttonsContainer: {
+    flexDirection: 'row',
+  },
+  buttonContainer: {
+    flex: 1,
   },
 });
