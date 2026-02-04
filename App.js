@@ -19,25 +19,47 @@ export default function App() {
   });
   const [userNumber, setUserNumber] = useState(null);
   const [gameIsOver, setGameIsOver] = useState(false);
+  const [guessRounds, setGuessRounds] = useState(0);
 
   const pickNumberHandler = useCallback((pickedNumber) => {
     setUserNumber(pickedNumber);
     setGameIsOver(false);
   }, []);
 
-  const gameOverHandler = useCallback(() => {
+  const gameOverHandler = useCallback((numberOfRounds) => {
     setGameIsOver(true);
+    setGuessRounds(numberOfRounds);
+  }, []);
+
+  const startNewGameHandler = useCallback(() => {
+    setUserNumber(null);
+    setGuessRounds(0);
+    setGameIsOver(false);
   }, []);
 
   const screen = useMemo(() => {
-    if (gameIsOver && userNumber) return <GameOverScreen userNumber />;
+    if (gameIsOver && userNumber)
+      return (
+        <GameOverScreen
+          userNumber={userNumber}
+          roundsNumber={guessRounds}
+          onStartNewGame={startNewGameHandler}
+        />
+      );
 
     return userNumber ? (
       <GameScreen userNumber={userNumber} onGameOver={gameOverHandler} />
     ) : (
       <StartGameScreen onPickNumber={pickNumberHandler} />
     );
-  }, [gameIsOver, userNumber, pickNumberHandler, gameOverHandler]);
+  }, [
+    gameIsOver,
+    userNumber,
+    guessRounds,
+    pickNumberHandler,
+    gameOverHandler,
+    startNewGameHandler,
+  ]);
 
   if (!fontsLoaded) {
     return <AppLoading />;
