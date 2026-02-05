@@ -2,7 +2,7 @@ import { Dimensions, Image, StyleSheet, Text, View } from 'react-native';
 import SuccessImg from '../../assets/images/success.png';
 import PrimaryButton from '../components/ui/PrimaryButton';
 import Title from '../components/ui/Title';
-import Breakpoints from '../constants/breakpoints';
+import { HorizontalBP } from '../constants/breakpoints';
 import Colors from '../constants/colors';
 
 const GameOverScreen = ({ roundsNumber, userNumber, onStartNewGame }) => {
@@ -34,8 +34,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   imageContainer: {
-    width: deviceWidth < Breakpoints.sm ? 150 : 300,
-    height: deviceWidth < Breakpoints.sm ? 150 : 300,
+    width: deviceWidth < HorizontalBP.sm ? 150 : 300,
+    height: deviceWidth < HorizontalBP.sm ? 150 : 300,
     borderRadius: '50%',
     borderWidth: 3,
     borderColor: Colors.primary800,

@@ -1,5 +1,5 @@
 import { Dimensions, StyleSheet, Text, View } from 'react-native';
-import Breakpoints from '../../constants/breakpoints';
+import { HorizontalBP } from '../../constants/breakpoints';
 import Colors from '../../constants/colors';
 
 const NumberContainer = ({ children }) => {
@@ -18,15 +18,15 @@ const styles = StyleSheet.create({
   container: {
     borderWidth: 4,
     borderColor: Colors.accent500,
-    padding: deviceWidth < Breakpoints.sm ? 12 : 24,
-    margin: deviceWidth < Breakpoints.sm ? 12 : 24,
+    padding: deviceWidth < HorizontalBP.sm ? 12 : 24,
+    margin: deviceWidth < HorizontalBP.sm ? 12 : 24,
     borderRadius: 8,
     alignItems: 'center',
     justifyContent: 'center',
   },
   text: {
     fontFamily: 'open-sans-bold',
-    fontSize: deviceWidth < Breakpoints.sm ? 28 : 36,
+    fontSize: deviceWidth < HorizontalBP.sm ? 28 : 36,
     color: Colors.accent500,
   },
 });

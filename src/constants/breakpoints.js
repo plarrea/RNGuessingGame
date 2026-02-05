@@ -1,5 +1,7 @@
-const Breakpoints = {
+export const HorizontalBP = {
   sm: '380',
 };
 
-export default Breakpoints;
+export const VerticalBP = {
+  sm: '410',
+};

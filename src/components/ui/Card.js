@@ -1,5 +1,5 @@
 import { Dimensions, StyleSheet, View } from 'react-native';
-import Breakpoints from '../../constants/breakpoints';
+import { HorizontalBP } from '../../constants/breakpoints';
 import Colors from '../../constants/colors';
 
 const Card = ({ children }) => {
@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
   card: {
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: deviceWidth < Breakpoints.sm ? 18 : 36,
+    marginTop: deviceWidth < HorizontalBP.sm ? 18 : 36,
     marginHorizontal: 20,
     padding: 16,
     backgroundColor: Colors.primary800,
